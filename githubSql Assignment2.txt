@@ -1,0 +1,40 @@
+31.Write the query to display studentname with max marks of each student group by studentname.
+   select Fname,max(marks) from studentdetails group by Fname;
+       
+     
+32.Write the query to display studentname with sum of marks of each student group by studentname.
+   select Fname,sum(marks) from studentdetails group by Fname;
+
+   
+33.Write the query to display studentname with max marks of each student group by studentname having sum of marks greater than 500.
+   select Fname,max(marks) from studentdetails group by Fname having sum(marks)>500;
+    
+
+34.Write the query to display studentname with max marks of each student group by studentname having sum of marks greater than 500 and studentname starts with ‘v’.
+   select Fname,max(marks) from studentdetails group by Fname having sum(marks)>500 and Fname="v%";
+
+
+35.Write the query to display studentname with min marks of each student group by studentname having sum of marks greater than 600.
+   select Fname,min(marks) from studentdetails group by Fname having sum(marks)>600;
+
+
+36.Write the query to display subjectname whose subject name starts with ‘P’ and deparment id in (1,2,7).
+   select subject from subjectdeptdetails where subject like "p%" and deptid in(1,2,7);
+
+
+37.Write the query to display students information whose email id does not contain ‘@’.
+   select * from studentdetails where emailid not like "%@%";
+  
+
+38.Write the query to display student details in the order of first name and last name in decrementing order.
+   select Fname,Lname from studentdetails order by Fname desc;
+
+
+39.Write the query to display the students count based on gender.
+   select Fname,count(gender) from studentdetails group by gender; 
+
+
+40.Write the query the students count based the address and having count greater than 30.
+   select Fname,count(address) as student_count from studentdetails group by address having count(address)>30;
+
+ 
