@@ -1,0 +1,92 @@
+
+1.Write a query to select all columns of studentdetails table.
+  select * from studentdetails;
+
+2.Write a query to select studentid from studentdetails table.
+  select studentid from studentdetails;
+
+3.Write a query to select studentnames from studentdetails whose age is greater than 20
+   select Fname from studentdetails where age>20;
+
+4.Write a query to select sname as StudentName from studentdetails whose studentid is less than 10
+  select Fname as StudentName from studentdetails where stuid<10;
+
+5.Write a query to select all columns of studentdetails table where studentid is either 1,2 and 7
+  select * from studentdetails from studentid in(1,2,7);
+
+6.Write a query to select all columns of studentdetails table  where studentid is from 1 to 10
+  select * from studentdetails where studentid<=10;
+  
+7.Write a query to update sname as ‘vijay’ of studentdetails table where studentid is 1
+  update studentdetails set Fname="vijay" where studentid=1;
+
+8.Write a query to update deptname as ‘CSE’ of deptdetails where deptid is 3
+  update deptdetails set deptname="CSE" where deptid=3;
+
+9.Write the query to update the age as 20 where studentid is either 1,2,3
+  update studentdetails set age=20 where studentid in(1,2,3);
+
+10.Write the query to update the age as 20 where sname is starting with ‘v’
+   update studentdetails set age=20 where fname like "v%";
+
+11.Write the query to delete the deptdetails whose deptname is null
+    delete from deptdetails where deptname=null;
+
+12.Write the query to select all columns of studentdetails whose name is not null
+    select * from studentdetails where not Fname=null;
+
+13.Write the query to select all distinct ages from studentdetails table.
+    select distinct age from studentdetails;
+
+14.Write the query to select all the ages whose name ends with ‘a’
+   select age from studentdetails where fname like "%a";
+
+15.Write the query to delete the records from studentdetails whose age is greater than 20
+   delete from studentdetails where age>=20;
+
+16.Write the query to delete the records from studentdetails whose sname contains ‘v’.
+   delete from studentdetails where Fname="%v%";
+
+
+17.Write the query to update emailid and age of studentdetails table whose studentid is 5
+   update studentdetails set Emailid="siri@gmail.com",age=26 where studentid=5;
+ 
+18.Write the query to select the studentdetails whose age is from 18 to 20 and sname starts with v
+   select * from studentdetails where age in(18,19,20) and Fname="v%";
+   
+
+19.Write the query to select the studentdetails whose studentid is multiple of 2 and sname contains ‘o’
+   select * from studentdetails where studentid%2=0 and Fname="%v%";
+
+20.Write the query to select the studentdetails by decreasing each age by 2 whose age is greater than 20
+    select Fname,age-2 as age from studentdetails where age>20;
+
+21.Write the query to get student who have scored maximum marks.
+    select studentid,max(marks) as max_marks from studentmarks; 
+
+22.Write the query to concatenate firstname and lastname and display with a greeting ‘Hi’.
+   select concat("Hi",Fname,Lname) as fullname from studentdetails;
+
+23.Write a query to sort the students in studentdetails tables by rollno in descending order.
+   select * from studentdetails order by rollno desc;
+
+24.Write a query to sort the students in studentdetails tables by studenid in ascending order.
+   select * from studentdetails order by studentid;
+
+25.Write the query to display the whose top 10 records or sorting the details based on the studentid in ascending order.
+   select * from studentdetails order by studentid limit 10; 
+
+26.Write the query to display studentname in ascending order.
+   select Fname from studentdetails order by Fname;
+
+27.Write the query to max of studentname where student age Is greater than 20
+   select Fname,max(age) as max_age from studentdetails where age>20;
+
+
+28.Write the query to display the students count whose age is less than 20
+   select Fname,count(age) as count_age from studentdetails where age<20;
+
+
+29.Write the query to update percentage for each student each subject mark.
+   update studentmarks set percentage=(70,52,60,98,75),marks=(55,95,85,63,78) where * studentmarks;
+

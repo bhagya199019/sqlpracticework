@@ -1,0 +1,215 @@
+
+mysql> create database tarabai;
+Query OK, 1 row affected (0.46 sec)
+
+
+
+mysql> use tarabai;
+Database changed
+
+
+mysql> create table studentdetails(studentid int primary key,Fname varchar(20) NOT NULL,Lname varchar(20) NOT NULL,age int NOT NULL,Emailid varchar(20) NOT NULL,gender varchar(10) NOT NULL,address varchar(20) NOT NULL,rollno int NOT NULL);
+Query OK, 0 rows affected (0.64 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_tarabai |
++-------------------+
+| studentdetails    |
++-------------------+
+1 row in set (0.49 sec)
+
+mysql> desc studentdetails;
++---------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| studentid   | int(11)     | NO   | PRI | NULL    |       |
+| Fname       | varchar(20) | NO   |     | NULL    |       |
+| Lname       | varchar(20) | NO   |     | NULL    |       |
+| age         | int(11)     | NO   |     | NULL    |       |
+| Emailid     | varchar(20) | NO   |     | NULL    |       |
+| gender      | varchar(10) | NO   |     | NULL    |       |
+| address     | varchar(20) | NO   |     | NULL    |       |
+| rollno      | int(11)     | NO   |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+8 rows in set (3.69 sec)
+
+mysql> create table Deptdetails(deptid int,deptName varchar(20),createdate varchar(20));
+Query OK, 0 rows affected (14.54 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_tarabai |
++-------------------+
+| deptdetails       |
+| studentdetails    |
++-------------------+
+2 rows in set (0.00 sec)
+
+mysql> desc deptdetails;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| deptid     | int(11)     | YES  |     | NULL    |       |
+| deptName   | varchar(20) | YES  |     | NULL    |       |
+| createdate | varchar(20) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+3 rows in set (0.11 sec)
+
+mysql> create table subjectdeptdetails(subjectid int,subject varchar(20),deptid int);
+Query OK, 0 rows affected (0.21 sec)
+
+mysql> desc subjectdeptdetails;
++---------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| subjectid   | int(11)     | YES  |     | NULL    |       |
+| subject     | varchar(20) | YES  |     | NULL    |       |
+| deptid      | int(11)     | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.13 sec)
+
+mysql> create table studentmarks(smid int,studentid int,subjectid int,marks int,percentage int);
+Query OK, 0 rows affected (0.60 sec)
+
+mysql> show tables;
++--------------------+
+| Tables_in_tarabai  |
++--------------------+
+| deptdetails        |
+| studentdetails     |
+| studentmarks       |
+| subjectdeptdetails |
++--------------------+
+4 rows in set (0.00 sec)
+
+mysql> create table studentdeptdetails(studentdeptid int,studentid int,deptid int);
+Query OK, 0 rows affected (0.82 sec)
+
+mysql> show tables;
++--------------------+
+| Tables_in_tarabai  |
++--------------------+
+| deptdetails        |
+| studentdeptdetails |
+| studentdetails     |
+| studentmarks       |
+| subjectdeptdetails |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> alter table studentdetails modify column studentid int primary key;
+Query OK, 0 rows affected (0.54 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table deptdetails add constraint fixed primary key (deptid,deptname);
+Query OK, 0 rows affected (0.34 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc deptdetails;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| deptid     | int(11)     | NO   | PRI | 0       |       |
+| deptName   | varchar(20) | NO   | PRI |         |       |
+| createdate | varchar(20) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+3 rows in set (0.02 sec)
+
+
+
+mysql> insert into studentdetails values(1,"bhagya","sree",30,"bhagya@gmail.com","female","AP",345);
+Query OK, 1 row affected (0.03 sec)
+
+
+mysql> insert into studentdetails values(2,"anjali","maraka",24,"anjali@gmail.com","female","AP",123);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into studentdetails values(3,"shwetha","reddy",25,"shwetha@gmail.com","female","KN",789);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into studentdetails values(4,"durga","prasanna",22,"durga@gmail.com","female","AP",267);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into studentdetails values(5,"lokesh","devisetty",25,"lokesh@gmail.com","male","AP",867);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from studentdetails;
++-------+-----------+---------+-----+---------------------------+--------+----------+--------+
+| studentid | Fname     | Lname    | age | EmailId                    | gender | address  | Rollno |
++-------+-----------+---------+-----+---------------------------+--------+----------+--------+
+|     1     | bhagya    | sree     |  30 | bhagya@gmail.com           | female | Ap       |    345 |
+|     2     | anjali    | maraka   |  24 | anjali@gmail.com           | female | Ap       |    123 |
+|     3     | shwetha   | reddy    |  25 | shwetha@gmail.com          | female | KN       |    789 |
+|     4     | durga     | prasanna |  22 | durga@gmail.com            | female | AP       |    267 |
+|     5     | lokesh    |devisetty |  25 | lokesh@gmail.com           | male   | AP       |    862 |
++-------+-----------+---------+-----+---------------------------+--------+----------+--------+
+5 rows in set (0.00 sec)
+
+
+mysql> insert into deptdetails values(1,"CSE","6/12/2013"),(2,"IT","3/6/2020"),(3,"ECE","12/3/2022"),(4,"EEE","19/9/2017"),(5,"mech","20/9/2019"),(6,"civil",31/9/2021);
+Query OK, 6 rows affected (0.11 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> select * FROM deptdetails;
++--------+----------+------------+
+| deptid | deptName | createdate |
++--------+----------+------------+
+|      1 | CSE      | 6/12/2013  |
+|      2 | IT       | 3/6/2020   |
+|      3 | ECE      | 12/3/2022  |
+|      4 | EEE      | 19/9/2017  |
+|      5 | mech     | 20/9/2019  |
+|      6 | civil    | 31/9/2021  |
++--------+----------+------------+
+6 rows in set (0.00 sec)
+
+
+
+mysql> insert into subjectdeptdetails values(1,"java",1),(2,"python",3),(3,"html",2),(4,"sql",5),(5,"css",4);
+Query OK, 5 rows affected (0.06 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from subjectdeptdetails;
++-------+---------+--------+
+| subid | subject | deptid  |
++-------+---------+--------+
+|     1 | java     |      1 |
+|     2 | python   |      3 |
+|     3 | html     |      2 |
+|     4 | sql      |      5 |
+|     5 | css      |      4 |
++-------+---------+--------+
+5 rows in set (0.00 sec)
+
+mysql> insert into studentmarks values(1,1,1,69,50),(2,2,2,76,60),(3,3,3,84,70),(4,4,4,55,40),(5,5,5,64,60);
+Query OK, 5 rows affected (0.60 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from studentmarks;
++------+-------+-----------+-------+------------+
+| smid | studentid | subjectid | marks | percentage |
++------+-------+-----------+-------+------------+
+|    1 |     1     |         1 |    69 |         50 |
+|    2 |     2     |         2 |    76 |         60 |
+|    3 |     3     |         3 |    84 |         70 |
+|    4 |     4     |         4 |    55 |         40 |
+|    5 |     5     |         5 |    64 |         60 |
++------+-------+-----------+-------+------------+
+5 rows in set (0.00 sec)
+
+mysql> insert into studentdeptdetails values(1,1,1),(2,2,2),(3,3,3),(4,4,4),(5,5,5);
+Query OK, 5 rows affected (0.05 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from studentdeptdetails;
++---------+-----------+--------+
+| studentdeptid | studentid | deptid |
++---------+-----------+--------+
+|       1       |         1 |      1 |
+|       2       |         2 |      2 |
+|       3       |         3 |      3 |
+|       4       |         4 |      4 |
+|       5       |         5 |      5 |
++---------+-----------+--------+
+5 rows in set (0.10 sec)
